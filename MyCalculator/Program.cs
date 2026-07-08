@@ -1,30 +1,35 @@
-﻿using System.Threading.Channels;
+﻿using System.Globalization;
+using System.Threading.Channels;
 
 
 
 // creating the variables for the user inputs
 
-int myNumber1 = 0; 
-int myNumber2 = 0;
+double myNumber1 = 0.0; 
+double myNumber2 = 0.0;
 
 //asking for first user input
-Console.WriteLine("Enter the first whole number!");
+Console.WriteLine("Enter the first number!");
 string userInput = Console.ReadLine();
 
 //converint with Parse
-myNumber1 = int.Parse(userInput);
+myNumber1 = double.Parse(userInput, CultureInfo.InvariantCulture);
 
-//asking for second user input
-Console.WriteLine("Enter the second whole number!");
+//asking for second user input,
+Console.WriteLine("Enter the second number!");
 userInput = Console.ReadLine();
 
 //converint with Parse
-myNumber2 = int.Parse(userInput);
+myNumber2 = double.Parse(userInput, CultureInfo.InvariantCulture);
 
 //defining the addition
-int sum = myNumber1 + myNumber2;
+double sum = myNumber1 + myNumber2;
+sum = Math.Round(sum, 2);
 
 //writing out what the user enters
-Console.WriteLine("Calculate Beep Boop: " + myNumber1 + " + " + myNumber2 + " is " + sum);
+//with concatination: Console.WriteLine("Calculate Beep Boop: " + myNumber1 + " + " + myNumber2 + " is " + sum);
+
+//with interpolation
+Console.WriteLine($"Calculating Beep Boop: {myNumber1.ToString(CultureInfo.InvariantCulture)} + {myNumber2.ToString(CultureInfo.InvariantCulture)} is {sum.ToString(CultureInfo.InvariantCulture)}");
 Console.ReadKey();
 
